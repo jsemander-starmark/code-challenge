@@ -4,7 +4,7 @@ import * as moment from 'moment-timezone';
 export interface IJWTConfig {
     secret: string;
 }
-export class JWT {
+export class JWTOKEN {
     protected exp: moment.MomentInputObject = { day: 1 };
     protected secret: string;
     

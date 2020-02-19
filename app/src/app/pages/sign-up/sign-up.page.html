@@ -1,0 +1,86 @@
+<ion-content>
+  <form [formGroup]="signUpForm" (ngSubmit)="signUp()" class="form1">
+    <ion-grid >
+      <ion-row color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div class="text-center">
+            <h3>Create your account!</h3>
+          </div>
+          
+          <div padding>
+            
+            <!-- First Name -->
+            <ion-item class="input-wrapper">
+              <ion-input name="firstName" type="text" placeholder="Enter first name" formControlName="firstName"></ion-input>
+            </ion-item>
+
+            <ion-item class="error" *ngIf="signUpForm.get('firstName').hasError('required') && signUpForm.get('firstName').touched">
+              Please enter first name
+            </ion-item>   
+            <!--./ First Name -->
+
+            <!-- Last Name -->
+            <ion-item class="input-wrapper">
+              <ion-input name="lastName" type="text" placeholder="Enter last name" formControlName="lastName"></ion-input>
+            </ion-item>
+
+            <ion-item class="error" *ngIf="signUpForm.get('lastName').hasError('required') && signUpForm.get('lastName').touched">
+              Please enter last name
+            </ion-item>   
+            <!--./ Last Name -->
+            
+            <!-- Email -->
+            <ion-item class="input-wrapper">
+              <ion-input name="userName" type="text" placeholder="Email" type="text" placeholder="Email" formControlName="userName"></ion-input>
+            </ion-item>
+            <ion-item class="error" *ngIf="signUpForm.get('userName').hasError('required') && signUpForm.get('userName').touched">
+              Please enter email
+            </ion-item>
+            <ion-item class="error" *ngIf="signUpForm.get('userName').hasError('pattern')">
+              Email is invalid
+            </ion-item>
+            <!--./ Email -->
+
+            <!-- Passwor -->
+            <ion-item class="input-wrapper">
+              <ion-input name="password" type="password" placeholder="Password" formControlName="password"></ion-input>
+            </ion-item>
+
+            <ion-item class="error" *ngIf="signUpForm.get('password').hasError('required') && signUpForm.get('password').touched">
+              Please enter password
+            </ion-item>
+            <ion-item class="error" *ngIf="signUpForm.get('password').hasError('minlength')">
+              Password must have 5 characters
+            </ion-item>            
+            <!--./ Passwor -->
+
+            <!-- Confirm Passwor -->
+            <ion-item class="input-wrapper">
+              <ion-input name="confirmPssword" type="password" placeholder="Confirm password" formControlName="confirmPassword"></ion-input>
+            </ion-item>
+
+            <ion-item class="error" *ngIf="signUpForm.get('confirmPassword').hasError('required') && signUpForm.get('confirmPassword').touched">
+              Please confirm password
+            </ion-item>
+            <ion-item class="error" *ngIf="signUpForm.get('confirmPassword').hasError('NoPassswordMatch') && signUpForm.get('confirmPassword').touched">
+              Password doesn't match
+            </ion-item>            
+            <!--./ Confirm Password -->
+
+          </div>
+
+          <div padding class="loginButton">
+            <ion-button size="large" type="submit" [disabled]="!signUpForm.valid" expand="block">SignUp</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col class="ion-text-end">
+          <a routerLink="/sign-in">Go back to Login</a>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </form>
+</ion-content>

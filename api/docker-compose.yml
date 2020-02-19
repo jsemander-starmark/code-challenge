@@ -1,12 +1,23 @@
 version: '3'
 services:
-    app:
-      build: .
-      environment:
-        DB_URL: ${DB_URL}
-        DEBUG: ${DEBUG}
-        NODE_ENV: ${NODE_ENV}
-        TZ: ${TZ}
-      ports:
-        - 3000:3000
-      restart: unless-stopped
+  app:
+    build: .
+    environment:
+      DB_URL: ${DB_URL}
+      DEBUG: ${DEBUG}
+      NODE_ENV: ${NODE_ENV}
+      TZ: ${TZ}
+    links:
+      - mongo  
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+    

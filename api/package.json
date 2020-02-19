@@ -8,13 +8,16 @@
     "docs": "apidoc -i src/ -o docs",
     "lint": "tslint --project tsconfig.json",
     "start": "node index.js",
+    "watch": "nodemon index.js",
     "test": "nyc mocha --require ts-node/register test/**/*.spec.ts --exit"
   },
   "author": "John Semander <jsemander@greathealthworks.com>",
   "license": "ISC",
   "private": true,
   "dependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "bcrypt": "^3.0.6",
+    "bcryptjs": "^2.4.3",
     "body-parser": "~1.18.2",
     "cors": "~2.8.5",
     "express": "~4.16.4",
@@ -24,6 +27,7 @@
     "lodash": "~4.17.4",
     "moment": "~2.24.0",
     "moment-timezone": "~0.5.11",
+    "mongoose": "^5.9.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.8",
     "uuid": "^3.3.3"
@@ -40,6 +44,7 @@
     "@types/lodash": "~4.14.136",
     "@types/mocha": "~5.2.5",
     "@types/moment-timezone": "~0.5.12",
+    "@types/mongoose": "^5.7.1",
     "@types/node": "~8.10.50",
     "@types/request-promise-native": "^1.0.17",
     "@types/uuid": "^3.4.5",
@@ -49,7 +54,7 @@
     "faker": "~4.1.0",
     "mocha": "~5.2.0",
     "nyc": "~13.1.0",
-    "ts-node": "~7.0.1",
+    "ts-node": "^8.6.2",
     "tslint": "~5.15.0",
     "typescript": "~3.4.3"
   }

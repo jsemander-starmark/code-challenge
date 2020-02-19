@@ -1,0 +1,26 @@
+
+<app-header></app-header>
+
+<ion-content >
+  <ion-row class="ion-spadding">
+    <ion-col>
+      <h3>User's info</h3>
+      <ion-list inset>     
+
+        <!-- Name -->
+        <ion-item lines="full">
+          Name: {{( userInfo | async)?.firstName + ' ' + ( userInfo | async)?.lastName }}
+        </ion-item>
+        <!--./ Name -->
+
+        <!-- Email -->
+        <ion-item lines="full">
+          Name: {{(userInfo | async)?.userName}}
+        </ion-item>
+        <!--./ Email -->
+
+
+      </ion-list>
+    </ion-col>
+  </ion-row>
+</ion-content>
