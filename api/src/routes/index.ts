@@ -18,6 +18,7 @@ export const Authorization = (resolvers: IResolvers): RequestHandler => {
             }
             try {
                 const userId = await resolvers.jwt.isAuthorized(authHeader.split(' ')[1]);
+                console.log('User Id', userId);
                 req.user = await resolvers.user.isAuthorized(userId);
                 return next();
             } catch (err) {

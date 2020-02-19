@@ -4,7 +4,7 @@
 declare global {
     namespace Express {
         export interface Request {
-            user: UserModel;
+            user: IUser;
         }
     }
 }
@@ -19,9 +19,9 @@ import * as expressValidator from 'express-validator';
 import * as helmet from 'helmet';
 import { Server } from 'http';
 import { IJWTConfig } from '../lib/JWT';
-import { UserModel } from '../models/users';
 import { IResolvers } from '../resolvers';
 import { Routes } from '../routes';
+import { IUser } from '../interfaces/user.interface';
 
 export interface IApp {
     app: express.Express;
@@ -29,7 +29,7 @@ export interface IApp {
 }
 export interface IAppConfig {
     [key: string]: any;
-    JWT: IJWTConfig;
+    JWTOKEN: IJWTConfig;
     Name: string;
     Port: number;
     Timezone: string;
@@ -81,12 +81,12 @@ export const App = (configs: IAppConfig, resolvers: IResolvers): IApp => {
      * Create routes
      */
     Routes(app, configs, resolvers);
-    
+
     /**
      * Expose application to port
      */
     const server: Server = app.listen(configs.Port, () => {
-        console.log('Server is listening on port ', configs.Port);
+        console.log('Listening on port ', configs.Port);
     });
     
     /**

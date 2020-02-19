@@ -1,8 +1,9 @@
-const { AppRunner, BatchRunner } = require('./app/runner');
+const { AppRunner } = require('./app/runner');
+// import { AppRunner } from './src/app/runner';
 
 if (process.env.DB_URL !== undefined) {
     AppRunner(process.env.DB_URL, {
-        JWT: {
+        JWTOKEN: {
             secret: Buffer.from(Math.random().toString(36)).toString('base64'),
         },
         Name: 'Code Challenge',
